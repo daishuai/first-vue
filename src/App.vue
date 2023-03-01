@@ -1,17 +1,25 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <Movie v-for="movie in movies" :key="movie.id" :title="movie.name"></Movie>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
 
+import Movie from './components/Movie.vue'
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    Movie
+  },
+  data: function () {
+    return {
+      movies: [
+        {"id": 1, "name": "金刚狼1"},
+        {"id": 2, "name": "金刚狼2"},
+        {"id": 3, "name": "金刚狼3"},
+      ]
+    }
   }
 }
 </script>
