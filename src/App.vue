@@ -7,6 +7,7 @@
 <script>
 
 import Movie from './components/Movie.vue'
+
 export default {
   name: 'App',
   components: {
@@ -20,6 +21,26 @@ export default {
         {"id": 3, "name": "金刚狼3"},
       ]
     }
+  },
+  created: function () {
+    console.log("App组件被创建时调用")
+    // 注意this关键词, lambda表达式中this
+    this.$http.get('/auth/resources_as_tree', {
+      params: {
+        username: 'super_admin'
+      }
+    }).then(function (response) {
+      // 处理成功情况
+      console.log(response)
+    }).catch(function (error) {
+      // 处理错误情况
+      console.log(error)
+    }).then(() => {
+      this.movies = []
+    })
+  },
+  mounted: function () {
+    console.log("App组件被挂载时调用")
   }
 }
 </script>
