@@ -1,6 +1,9 @@
 import Music from '@/components/Music.vue'
 import VueRouter from 'vue-router'
 import Vue from 'vue'
+import ChineseMusic from "@/components/ChineseMusic.vue";
+import EuropeanMusic from "@/components/EuropeanMusic.vue";
+import MusicDetail from "@/components/MusicDetail.vue";
 
 Vue.use(VueRouter)
 
@@ -8,7 +11,22 @@ Vue.use(VueRouter)
 const routes = [
     {
         path: '/music',
-        component: Music
+        component: Music,
+        children: [
+            {
+                path: 'chinese',
+                component: ChineseMusic
+            },
+            {
+                path: 'european',
+                component: EuropeanMusic
+            },
+            {
+                path: ':id',
+                component: MusicDetail,
+                props: true
+            }
+        ]
     }
 ]
 
