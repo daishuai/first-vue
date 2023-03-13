@@ -1,5 +1,6 @@
 <template>
     <div id="app">
+        <VuexCount/>
         <Movie v-for="movie in movies" :key="movie.id" :title="movie.name"></Movie>
         <router-link to="/music">音乐</router-link>
 
@@ -12,10 +13,12 @@
 <script>
 
 import Movie from './components/Movie.vue'
+import VuexCount from "@/components/VuexCount.vue";
 
 export default {
     name: 'App',
     components: {
+        VuexCount,
         Movie
     },
     data: function () {
